@@ -2,20 +2,21 @@
   "name": "ecommerce-website",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://k3sara.github.io/Ecommerce-website",
+  "homepage": "https://k3sara.github.io/N-Allen",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.4",
     "clsx": "^2.1.1",
     "firebase": "^11.8.1",
-    "framer-motion": "^12.11.3",
+    "framer-motion": "^12.17.3",
     "lucide-react": "^0.510.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
