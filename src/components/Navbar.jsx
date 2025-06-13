@@ -72,13 +72,12 @@ function Navbar({ onOpenLoginModal, firebaseReady }) { // Added firebaseReady pr
           style={{ marginRight: isSearchOpen ? '220px' : '0px', transition: 'margin-right 0.3s ease' }}
         >
           <Link to="/" className="text-gray-600 hover:text-black" style={{lineHeight: '2.5rem'}}>
-             Home
+              Home
           </Link>
           <Link to="/products" className="text-gray-600 hover:text-black" style={{lineHeight: '2.5rem'}}>
-             Products
+              Products
           </Link>
           {/* Login Icon - now disabled if Firebase is not ready */}
-          {/* Removed the <Link to="/login"> wrapper */}
           <motion.div
             className={firebaseReady ? "cursor-pointer" : "cursor-not-allowed opacity-50"} // Disable if not ready
             onClick={firebaseReady ? onOpenLoginModal : null} // Only clickable if ready
@@ -109,23 +108,25 @@ function Navbar({ onOpenLoginModal, firebaseReady }) { // Added firebaseReady pr
           <AnimatePresence>
             {isSearchOpen && (
               <motion.div
-              initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: 222 }}
-              exit={{ opacity: 0, width: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="absolute top-full right-0 mt-2 bg-white rounded-md shadow-lg border border-gray-200 z-10"
-              style={{ top: '-10px', height: '30px', right: '30px' }}
-            >
-              <input
-                ref={searchInputRef}
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="h-full w-full px-4 text-gray-800 placeholder:text-gray-400 focus:outline-none"
-                placeholder="Search products..."
-              />
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: 222 }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                // Changed 'rounded-md' to 'rounded-full' for more rounded corners
+                className="absolute top-full right-0 mt-2 bg-white rounded-full shadow-lg border border-gray-200 z-10"
+                style={{ top: '-10px', height: '30px', right: '30px' }}
+              >
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  // Added 'rounded-full' to the input for consistent rounding
+                  className="h-full w-full px-4 text-gray-800 placeholder:text-gray-400 focus:outline-none rounded-full"
+                  placeholder="Search products..."
+                />
                 {searchResults.length > 0 && (
-                  <ul className="max-h-60 overflow-y-auto">
+                  <ul className="absolute top-full left-0 w-full bg-white rounded-b-full shadow-lg border border-t-0 border-gray-200 max-h-60 overflow-y-auto">
                     {searchResults.map((product) => (
                       <li key={product.id}>
                         <Link
